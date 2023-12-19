@@ -1,10 +1,11 @@
 
 install:
-	pip3 install -r requirements.txt
-	sudo npm install -g concurrently
+	pip3 install -r requirements.txt;
+	sudo npm install -g concurrently;
+	cd frontend && npm install;
 
 start:
-	unset HOST
+	unset HOST;
 	concurrently "make run-flask" "make run-node"
 
 run-flask:
