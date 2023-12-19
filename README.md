@@ -2,6 +2,7 @@
 
 ## Installation
 
+Please note that you have to have [pip3](https://pypi.org/project/pip/) and [React](https://react.dev/) libraries installed. 
 Please install required packages first.
 
 ```
