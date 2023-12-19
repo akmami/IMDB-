@@ -1,0 +1,50 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('dataset/IMDb movies.csv')
+
+df['date_published'] = pd.to_datetime(df['date_published'], errors='coerce')
+
+plt.figure(figsize=(10, 6))
+df['date_published'].dt.year.hist(bins=20, edgecolor='black')
+plt.title('Published Date Distribution')
+plt.xlabel('Year')
+plt.ylabel('Number of Movies')
+plt.grid(False)
+plt.show()
+
+plt.figure(figsize=(12, 6))
+genres = df['genre'].str.split(',', expand=True).stack().str.strip()
+genres.value_counts().plot(kind='bar', edgecolor='black')
+plt.title('Genre Distribution')
+plt.xlabel('Genre')
+plt.ylabel('Number of Movies')
+plt.grid(False)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+df['avg_vote'].hist(bins=10, edgecolor='black')
+plt.title('Average Vote Distribution')
+plt.xlabel('Average Vote')
+plt.ylabel('Number of Movies')
+plt.grid(False)
+plt.show()
+
+plt.figure(figsize=(12, 6))
+top_languages = df['language'].value_counts().nlargest(10)
+top_languages.plot(kind='bar', edgecolor='black')
+plt.title('Top 10 Languages by Number of Movies')
+plt.xlabel('Language')
+plt.ylabel('Number of Movies')
+plt.grid(False)
+plt.show()
+
+plt.figure(figsize=(12, 6))
+directors = df['director'].str.split(',', expand=True).stack().str.strip()
+top_directors = directors.value_counts().nlargest(25)
+top_directors.plot(kind='bar', edgecolor='black')
+plt.title('Top Directors by Number of Movies')
+plt.xlabel('Director')
+plt.ylabel('Number of Movies')
+plt.grid(False)
+plt.show()
