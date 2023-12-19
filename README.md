@@ -22,3 +22,13 @@ make start
 ```
 
 This will run both program concurrently.
+
+In case if you encounter with some error, please run frontend and backend in seperate terminal windows.
+
+```
+make run-flask
+```
+
+```
+make run-node
+```
